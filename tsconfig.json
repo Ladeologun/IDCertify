@@ -5,7 +5,9 @@
       "paths": {
           "*": ["/*"],
           "@components": ["components"],
-          "@drawables": ["assets/drawables"]
+          "@drawables": ["assets/drawables"],
+          "@auth/*": ["features/auth/*"],
+          "@styles": ["styles"]
       }
     },
     "extends": "@react-native/typescript-config/tsconfig.json"

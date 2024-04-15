@@ -6,7 +6,8 @@
  */
 
 import React from 'react';
-import {Screen}from '@components';
+import { PaperProvider } from 'react-native-paper';
+import Register from '@auth/components/Register';
 
 
 
@@ -15,7 +16,9 @@ function App(): React.JSX.Element {
  
 
   return (
-    <Screen />
+    <PaperProvider>
+      <Register />
+    </PaperProvider>
   );
 }
 

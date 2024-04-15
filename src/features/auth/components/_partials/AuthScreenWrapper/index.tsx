@@ -8,7 +8,7 @@ type ScreenProps = {
     hideStatusBar?: boolean
 }
 
-const Screen: React.FC<PropsWithChildren<ScreenProps>> = ({
+const AuthScreenWrapper: React.FC<PropsWithChildren<ScreenProps>> = ({
     children,
     hideStatusBar = false,
 }) => {
@@ -21,10 +21,8 @@ const Screen: React.FC<PropsWithChildren<ScreenProps>> = ({
                 translucent={true}
             />
             <BackgroundArcIcon style={styles.backgroundArc}/>
-            <View style={styles.innerWrapper}>
-                {children}
-            </View>
+            {children}
         </SafeAreaView>
     );
 };
-export default Screen;
+export default AuthScreenWrapper;

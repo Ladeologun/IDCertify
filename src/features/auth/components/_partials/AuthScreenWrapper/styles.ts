@@ -1,4 +1,5 @@
 import { StyleSheet, Platform, StatusBar } from "react-native";
+import { Colors } from "@styles";
 
 // console.log(StatusBar.currentHeight)
 //StatusBar.currentHeight only has a value on android, it gives null on ios
@@ -6,7 +7,7 @@ import { StyleSheet, Platform, StatusBar } from "react-native";
 const styles =  StyleSheet.create({
     screen: {
         paddingTop: Platform.OS == "android" ? StatusBar.currentHeight: 0,
-        backgroundColor:"#3817FF",
+        backgroundColor: Colors.BackgroundPrmiary,
         flex:1
     },
     backgroundArc: {
