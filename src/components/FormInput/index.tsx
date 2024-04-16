@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { View,Text, TouchableWithoutFeedback, TextStyle} from "react-native";
+import { View,Text, TouchableWithoutFeedback, TextStyle, ViewStyle} from "react-native";
 import { TextInput } from "react-native-paper";
 import styles from "./styles";
 import { Colors } from "@styles";
+import { tokens } from "react-native-paper/lib/typescript/styles/themes/v3/tokens";
 
 
 type Props = {
+    touched?:boolean
+    error?:string
     label?:string
     hasLeftAffix?: boolean
     hasRightAffix?: boolean
@@ -20,6 +23,8 @@ type Props = {
         
     };
     textInputStyle?:TextStyle;
+    errorContainerStyle?:ViewStyle;
+    errorStyle?:TextStyle;
     inputType:string;
     handleRightPress?:()=>void;
     handleLeftPress?:()=>void;
@@ -36,6 +41,8 @@ interface InputProps {
 }
 
 export const FormInput: React.FC<Props> = ({
+    touched=false,
+    error,
     label,
     hasLeftAffix,
     hasRightAffix,
@@ -47,6 +54,8 @@ export const FormInput: React.FC<Props> = ({
     value,
     textInputProps,
     textInputStyle,
+    errorContainerStyle,
+    errorStyle,
     inputType
 }) => {
 
@@ -65,7 +74,7 @@ export const FormInput: React.FC<Props> = ({
             case "password":
                 return {
                     autoCorrect: false,
-                    secureTextEntry: true,
+                    // secureTextEntry: isSecureTextEntry,
                     autoCompleteType: "password",
                     autoCapitalize: "none"
                 };
@@ -127,19 +136,19 @@ export const FormInput: React.FC<Props> = ({
     return (
         <View style={styles.wrapper}>
             <Text style={styles.textInputLabel}>{label}</Text>
-            <View style={styles.inputContainer}>
+            <View style={[styles.inputContainer, !!error && styles.inputContainerError]}>
                 {!!hasLeftAffix && 
                     <TouchableWithoutFeedback
                         onPress={handleLeftPress}
                     >
-                        <View>
+                        <View style={{paddingLeft:16}}>
                             {leftComponent}
                         </View>
                     </TouchableWithoutFeedback>
                 }
                 <TextInput
                     mode="outlined"
-                    // error
+                    error={!!error}
                     dense={!textInputProps?.multiline}
                     value={value !== undefined && value !== null? String(value): value}
                     label={textInputProps?.label}
@@ -160,10 +169,19 @@ export const FormInput: React.FC<Props> = ({
                     <TouchableWithoutFeedback
                         onPress={handleRightPress}
                     >
-                        {rightComponent}
+                        <View style={{paddingRight:16}}>
+                            {rightComponent}
+                        </View>
                     </TouchableWithoutFeedback>
                 }
             </View>
+            {(touched && !!error) &&
+                <View style={[styles.errorContainer, errorContainerStyle]}>
+                    <Text style={[styles.error, errorStyle]}>
+                        {error}
+                    </Text>
+                </View>
+            }
         </View>
     );
 };

@@ -22,7 +22,8 @@ const styles =  StyleSheet.create({
         paddingHorizontal:18,
         // backgroundColor:"red",
         flex:1,
-        marginTop:43
+        // marginTop:43
+        marginTop:37
     },
     header: {
         ...Typography.header1,
@@ -48,11 +49,19 @@ const styles =  StyleSheet.create({
         color: Colors.TextPrimary 
     },
     CTAsection: {
-        marginTop:90,
+        marginTop:80,
         flexDirection:"row",
         justifyContent:"space-between"
         // height:10,
         // backgroundColor:"red"
+    },
+    stepInfoText: {
+        fontFamily: Fonts.RalewayRegular,
+        fontSize: 16,
+        fontWeight:"600",
+        color: Colors.LightYellow,
+        marginTop:25,
+        marginBottom:24
     }
 });
 

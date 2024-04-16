@@ -1,6 +1,7 @@
 import React, {PropsWithChildren, useState} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import CountryFlag from "react-native-country-flag";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AuthScreenWrapper from '@auth/components/_partials/AuthScreenWrapper';
 import IDcertifyIcon from '@drawables/idcertify-logo.svg';
 import styles from './styles';
@@ -15,8 +16,19 @@ type RegistrationModeType = 'individual'|'business'
 const Register: React.FC = () => {
 
     const [registrationMode, setRegistrationMode] = useState<RegistrationModeType>("individual")
+    const [registrationStep, setRegistrationStep] = useState(1)
     const isIndividualRegistration = registrationMode == "individual"
     const isBusinessRegistration = registrationMode == "business"
+    const TOTAL_STEP = 3
+
+
+    const renderStepVisualItem = (step:number)=> {
+        if (registrationStep == step){
+            // render animated view
+        }else {
+            //render normal view
+        }
+    }
 
 
 
@@ -57,22 +69,36 @@ const Register: React.FC = () => {
                         handlePress={()=>{setRegistrationMode("business")}}
                     />
                 </View>
+                <Text style={styles.stepInfoText}>Step 1 of 3</Text>
+
                 <FormInput 
                     label={"EMAIL"}
                     textInputProps={{
                         placeholder:"email@email.com"
                     }}
                     inputType="email"
+                    touched={true}
+                    // error={"This is required"}
                 />
                 <FormInput
                     hasLeftAffix={true}
-                    leftComponent={<CountryFlag isoCode="ng" size={16} style={{marginLeft:16}}/>} 
+                    leftComponent={<CountryFlag isoCode="ng" size={16}/>} 
                     label={"PHONENUMBER"}
                     textInputProps={{
                         placeholder:"+234709897434"
                     }}
                     inputType="phone"
+                    hasRightAffix
+                    rightComponent={
+                        <Icon 
+                            name={'eye-off-outline'}
+                            style={{fontSize:26, color:"grey"}}
+                        />
+                    }
+                    touched={true}
+                    // error={"This is required"}
                 />
+                <Text>Pesonal Information</Text>
             </View>
         </ScrollView>
     </AuthScreenWrapper>
