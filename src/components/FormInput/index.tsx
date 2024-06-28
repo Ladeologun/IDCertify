@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { View,Text, TouchableWithoutFeedback, TextStyle, ViewStyle} from "react-native";
 import { TextInput } from "react-native-paper";
 import styles from "./styles";
@@ -28,7 +28,7 @@ type Props = {
     inputType:string;
     handleRightPress?:()=>void;
     handleLeftPress?:()=>void;
-    handleTextChange?:()=>void;
+    handleTextChange?:(e: string | ChangeEvent<any>) => void;
 
 }
 
@@ -136,7 +136,7 @@ export const FormInput: React.FC<Props> = ({
     return (
         <View style={styles.wrapper}>
             <Text style={styles.textInputLabel}>{label}</Text>
-            <View style={[styles.inputContainer, !!error && styles.inputContainerError]}>
+            <View style={[styles.inputContainer, !!error && touched && styles.inputContainerError]}>
                 {!!hasLeftAffix && 
                     <TouchableWithoutFeedback
                         onPress={handleLeftPress}
@@ -153,6 +153,7 @@ export const FormInput: React.FC<Props> = ({
                     value={value !== undefined && value !== null? String(value): value}
                     label={textInputProps?.label}
                     placeholder={textInputProps?.placeholder}
+                    placeholderTextColor={"grey"}
                     onChangeText={handleTextChange}
                     disabled={textInputProps?.disabled}
                     textAlignVertical={textInputProps?.multiline?"top":"auto"}

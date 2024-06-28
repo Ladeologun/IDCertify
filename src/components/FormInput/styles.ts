@@ -14,35 +14,36 @@ const styles =  StyleSheet.create({
         borderColor:"transparent"
     },
     inputContainerError: {
-        borderWidth:1.5,
+        borderWidth:1,
         borderColor:Colors.Red
     },
     textInput: {
         flex:1,
         fontFamily: Fonts.RalewayRegular,
-        fontSize:16
+        fontSize:14
     },
     textInputLabel: {
         fontFamily: Fonts.RalewaySemiBold,
         fontSize: 12,
         fontWeight:"700",
         marginBottom:8,
-        color: Colors.White
+        color: Colors.White,
+        textTransform:"uppercase"
 
     },
     wrapper: {
-        marginBottom:24
+        marginBottom:22
     },
     error:{
-        fontFamily: Fonts.RalewayMediumItalic,
-        fontSize: 14,
-        lineHeight: 22,
+        fontFamily: Fonts.RalewayRegular,
+        fontSize: 13,
+        // lineHeight: 22,
         color: Colors.Red
     },
     errorContainer: {
         flexDirection: "row",
         alignItems: "center",
-        marginTop: 4
+        marginTop: 3
     }
 });
 

@@ -20,10 +20,8 @@ const styles =  StyleSheet.create({
     },
     mainContent: {
         paddingHorizontal:18,
-        // backgroundColor:"red",
         flex:1,
-        // marginTop:43
-        marginTop:37
+        marginTop:30
     },
     header: {
         ...Typography.header1,
@@ -45,15 +43,14 @@ const styles =  StyleSheet.create({
     overviewText: {
         fontFamily: Fonts.RalewayRegular,
         fontSize: 14,
+        lineHeight:21,
         fontWeight:"400",
         color: Colors.TextPrimary 
     },
     CTAsection: {
-        marginTop:80,
+        marginTop:55,
         flexDirection:"row",
         justifyContent:"space-between"
-        // height:10,
-        // backgroundColor:"red"
     },
     stepInfoText: {
         fontFamily: Fonts.RalewayRegular,
@@ -62,6 +59,43 @@ const styles =  StyleSheet.create({
         color: Colors.LightYellow,
         marginTop:25,
         marginBottom:24
+    },
+    visualItem: {
+        height:6,
+        width:15,
+        borderRadius:2,
+        marginRight:4,
+        backgroundColor:"rgba(255, 255, 255, 0.5)"
+    },
+    animatedViewStyle: {
+        height:6,
+        marginRight:4,
+        borderRadius:2,
+    },
+    visualContainer:{
+        flexDirection:"row",
+        alignItems:"center",
+        marginTop:4
+    },
+    stepText: {
+        fontFamily: Fonts.RalewayRegular,
+        fontSize: 15,
+        fontWeight:"400",
+        color:Colors.White,
+        marginVertical:6
+    },
+    questionText: {
+        marginTop:15,
+        fontFamily: Fonts.RalewayRegular,
+        fontSize: 13,
+        color: Colors.TextPrimary
+    },
+    loginText: {
+        color:Colors.White,
+        fontWeight:"600",
+    },
+    footerSection: {
+        marginTop: 50
     }
 });
 
